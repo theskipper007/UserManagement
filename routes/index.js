@@ -1,2 +1,3 @@
-const routes = require('./user');
+const UserRoutes = require('./user');
+const submissionRoutes = 
 module.exports =  routes;
