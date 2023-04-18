@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const UserController =  require('../controllers/user');
-const ProductController = require('../controllers/product')
+const ProductController = require('../controllers/product');
+const SubmissionControlller = require('../controllers/submission')
 
 
 module.exports = [{
@@ -74,4 +75,26 @@ module.exports = [{
         },
 },
 },
+{
+    method: 'POST',
+    path: '/submission/{userId}',
+    handler: SubmissionControlller.submitResponse,
+    config: {
+        validate: {
+            payload : Joi.object({
+                choice: Joi.string(),
+            })
+        },
+},
+},
+// {
+//     method: 'GET',
+//     path: '/submission/{userId}',
+//     handler: SubmissionControlller.getResponseBasedOnId,
+// },
+// {
+//     method: 'GET',
+//     path: '/result',
+//     handler: SubmissionControlller.getResult,
+// },
 ]
