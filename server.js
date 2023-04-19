@@ -1,6 +1,7 @@
 const Hapi = require('hapi');
 const Routes = require('./routes/index');
 const db = require('./models');
+const UserController = require('./controllers/user')
 
 
 const server = new Hapi.Server();
@@ -39,6 +40,7 @@ db.sequelize.sync()
     }
     callback(null,false)
     }
+    
     server.register(require('hapi-auth-basic'), (err) => {
         
         server.auth.strategy('simple', 'basic', { validateFunc : validate })
@@ -46,6 +48,7 @@ db.sequelize.sync()
         server.start();
         console.log('Server running @3000');
     }
+
     )};
 
 init();

@@ -6,7 +6,6 @@ const UserProductModel = db.UserProducts;
 const subscribeProduct = async (request, reply) => {
     try{
     let createdData = await UserProductModel.create({user_id:request.params.userId,product_id:request.payload.productId});
-    console.log('createdData',createdData);
     reply(createdData ? 'Subscribed sucessfuly' : 'Subscription exists')
     }
     catch(err){

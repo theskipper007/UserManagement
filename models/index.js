@@ -15,7 +15,6 @@ db.Users = require('./user.model') (sequelize, DataTypes)
 db.Products =  require('./product.model') (sequelize, DataTypes)
 db.UserProducts = require('./userproduct.model') (sequelize,DataTypes)
 db.Submissions = require('./submissions.model')(sequelize, DataTypes)
-// console.log('db',db.products);
 
 Object.keys(db).forEach((key) => {
     if('associate' in db[key]){

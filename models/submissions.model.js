@@ -1,6 +1,7 @@
 const {DataTypes} = require('sequelize');
-const db = require('./index');
-const connectionHelper = require('../connection');
+const connectionHelper = require('../helpers/elastic-search');
+
+
 
 module.exports = (sequelize, DataTypes) => {
     const Submissions = sequelize.define('Submissions',{
@@ -26,10 +27,18 @@ module.exports = (sequelize, DataTypes) => {
 Submissions.associate = function(models) {
     Submissions.hasMany(models.Users, {as:'users',foreignKey:{ name:'id'},constraints : false})
 };
-Submissions.afterCreate(async function(){
-    console.log('in');
-    await connectionHelper.syncData();
-})
+Submissions.afterCreate((submission) => connectionHelper.updateElasticSearch(submission, sequelize))
+  
+  Submissions.afterUpdate((submission) => connectionHelper.updateElasticSearch(submission, sequelize))
+  
+//   Submissions.afterDestroy(async (user) => {
+//     await client.delete({
+//       index: 'newsubmissions',
+//       id: user.id
+//     });
+//   });
+
 return Submissions;
 
 }
+

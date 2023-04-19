@@ -12,8 +12,10 @@
     "elasticsearch": "^16.7.3",
     "hapi": "16.1.0",
     "hapi-auth-basic": "4.2.0",
+    "ioredis": "^4.28.2",
     "joi": "10.2.1",
     "pg": "^8.10.0",
+    "redis-server": "^1.2.2",
     "sequelize": "^4.23.1"
   }
 }

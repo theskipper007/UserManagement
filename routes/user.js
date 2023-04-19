@@ -87,14 +87,14 @@ module.exports = [{
         },
 },
 },
-// {
-//     method: 'GET',
-//     path: '/submission/{userId}',
-//     handler: SubmissionControlller.getResponseBasedOnId,
-// },
-// {
-//     method: 'GET',
-//     path: '/result',
-//     handler: SubmissionControlller.getResult,
-// },
+{
+    method: 'GET',
+    path: '/submission/{userId}',
+    handler: SubmissionControlller.getResponseBasedOnId,
+},
+{
+    method: 'GET',
+    path: '/result',
+    handler: SubmissionControlller.getResult,
+},
 ]
